@@ -7,4 +7,5 @@ enum status{
 };
 
 extern enum status validate_arguments(int argc, char *argv[]);
+extern enum status copy(int argc, char *argv[]);
 #endif

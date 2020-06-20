@@ -13,7 +13,24 @@ enum status validate_arguments(int argc, char *argv[])
     printf("File to be copied \"%s\" does not exist!!!\n", argv[1]);
     return fail;
   }
-  printf("OK, file \"%s\" exists\n", argv[1]);
+
+  return ok;
+}
+
+enum status copy(int argc, char *argv[])
+{
+  FILE * from = fopen(argv[1], "r");
+  FILE * to = fopen(argv[2], "w+");
+  if(!from || !to)
+    return fail;
+
+  int character = 0;
+  while(EOF != character){
+    character = fgetc(from);
+    if(EOF != character){
+      fputc(character, to);
+    }
+  }
 
   return ok;
 }
